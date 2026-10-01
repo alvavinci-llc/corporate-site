@@ -253,8 +253,9 @@ html[lang="en"] .page-hero-title { font-weight: 600; line-height: 1.08; }
     .flow-branches--3 { grid-template-columns: repeat(3,minmax(0,1fr)); }
 }
 @media (max-width:699px) {
-    .hero-video { object-position: 58% 50%; }
-    .hero-shade { background: rgba(16,24,42,.74); }
+    /* スマホは縦長（9:16）の専用映像を、見出しから3つの指標までの範囲（約1画面）に収め、下の白い枠の手前で紺に溶かす */
+    .hero-video { bottom: auto; height: 920px; object-position: 50% 45%; -webkit-mask-image: linear-gradient(#000 68%, transparent); mask-image: linear-gradient(#000 68%, transparent); }
+    .hero-shade { background: linear-gradient(180deg, rgba(16,24,42,.66) 0, rgba(16,24,42,.64) 420px, rgba(16,24,42,.66) 760px, var(--navy) 920px); }
     .sec-head { align-items: start; }
     .readout { grid-template-columns: 1fr; }
     .readout div { padding-block: 16px; border-bottom: 1px solid var(--line-dark); }

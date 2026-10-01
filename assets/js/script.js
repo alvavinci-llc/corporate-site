@@ -112,6 +112,11 @@
     if (!video) { return; }
     var reduce = window.matchMedia('(prefers-reduced-motion: reduce)');
 
+    // スマホでは縦長映像に合わせて、読み込み前に出す静止画も縦長にする
+    if (window.matchMedia('(max-width: 699px)').matches) {
+        video.poster = video.poster.replace('hero-highlight-poster', 'hero-highlight-vertical-poster');
+    }
+
     function stop() {
         video.pause();
         video.removeAttribute('autoplay');
