@@ -3,6 +3,7 @@
    共通スクリプト
      1. モバイルドロワー
      2. スクロールリビール
+     3. ヒーロー背景映像（モーション軽減時は停止、画面外では一時停止）
    外部ライブラリには依存しない。
    ===================================================================== */
 (function () {
@@ -99,4 +100,41 @@
     }, { rootMargin: '0px 0px -6% 0px', threshold: 0.1 });
 
     Array.prototype.forEach.call(targets, function (el) { io.observe(el); });
+})();
+
+/* -----------------------------------------------------------------
+   3. ヒーロー背景映像
+   ----------------------------------------------------------------- */
+(function () {
+    'use strict';
+
+    var video = document.querySelector('.hero-video');
+    if (!video) { return; }
+    var reduce = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+    function stop() {
+        video.pause();
+        video.removeAttribute('autoplay');
+        video.preload = 'none';
+    }
+    function tryPlay() {
+        if (reduce.matches) { return; }
+        var playing = video.play();
+        if (playing && playing.catch) { playing.catch(function () {}); }
+    }
+
+    if (reduce.matches) { stop(); }
+    if (reduce.addEventListener) {
+        reduce.addEventListener('change', function (event) {
+            if (event.matches) { stop(); } else { tryPlay(); }
+        });
+    }
+
+    if ('IntersectionObserver' in window) {
+        new IntersectionObserver(function (entries) {
+            entries.forEach(function (entry) {
+                if (entry.isIntersecting) { tryPlay(); } else { video.pause(); }
+            });
+        }).observe(video);
+    }
 })();
