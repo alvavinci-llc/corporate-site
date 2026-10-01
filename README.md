@@ -33,6 +33,7 @@ AIの先進性だけでなく、複数事業を長期運営する企業として
 | `assets/images/brand-mark.png` | ヘッダーとフッターで使用するブランドマーク |
 | `assets/images/alvin-mascot.*` | AIエージェントキャラクター Alvin |
 | `assets/images/sora-icon.*` | AI事業部リード ソラ |
+| `assets/videos/hero-highlight-*` | トップのヒーロー背景映像。AI生成（Higgsfield / Seedance 2.5）の架空のコンセプト映像で、実在の人物・施設ではない。17秒ループ・無音・強い点滅なし。PCは1080p（WebM 2.2MB / MP4 3.4MB）、699px以下は720p MP4（1.5MB）、ポスターはWebP。モーション軽減設定では再生せず、画面外では一時停止する |
 | `assets/legacy/*` | 現行HTMLから参照されない旧デザイン案の退避先 |
 | `robots.txt` / `sitemap.xml` | クロール設定と公開ページ一覧 |
 | `og-image.png` | 新デザインに合わせた 1200 × 630 px のOGP共通画像 |
